@@ -378,20 +378,27 @@ src="https://www.facebook.com/tr?id=2238075896675319&ev=PageView&noscript=1"/>
     यह हमारे actual notes का sample है — <strong style="color:#fff;">quality खुद judge करो</strong>
   </p>
 
+  <!-- TAB HINT -->
+  <p style="text-align:center;font-size:.83rem;color:var(--yellow);margin-bottom:10px;font-weight:700;animation:blinktag 1.8s step-end infinite;">
+    👇 नीचे दोनों Demos देखो — Tab पर click करके switch करो
+  </p>
+
   <!-- TAB SWITCHER -->
-  <div style="display:flex;gap:10px;margin-bottom:20px;background:#0d0d1c;border-radius:12px;padding:6px;">
+  <div style="display:flex;gap:10px;margin-bottom:20px;background:#0d0d1c;border-radius:12px;padding:6px;border:1.5px dashed rgba(255,215,0,0.3);">
     <button id="tab-notes" onclick="switchTab('notes')"
-      style="flex:1;padding:11px;border-radius:8px;border:none;cursor:pointer;font-family:'Baloo 2',cursive;font-size:.93rem;font-weight:800;background:var(--red);color:#fff;transition:all .2s;">
+      style="flex:1;padding:12px;border-radius:8px;border:none;cursor:pointer;font-family:'Baloo 2',cursive;font-size:.93rem;font-weight:800;background:transparent;color:var(--muted);transition:all .2s;border:1.5px dashed rgba(255,255,255,0.15);">
       📝 Notes Demo
+      <span style="font-size:.7rem;display:block;color:rgba(255,255,255,.4);font-weight:600;margin-top:2px;">यहाँ click करो 👆</span>
     </button>
     <button id="tab-pyqs" onclick="switchTab('pyqs')"
-      style="flex:1;padding:11px;border-radius:8px;border:none;cursor:pointer;font-family:'Baloo 2',cursive;font-size:.93rem;font-weight:800;background:transparent;color:var(--muted);transition:all .2s;">
+      style="flex:1;padding:12px;border-radius:8px;border:none;cursor:pointer;font-family:'Baloo 2',cursive;font-size:.93rem;font-weight:800;background:var(--red);color:#fff;transition:all .2s;position:relative;">
       📄 PYQs Demo
+      <span style="position:absolute;top:-8px;right:-6px;background:var(--green);color:#fff;font-size:.55rem;font-weight:900;padding:2px 6px;border-radius:50px;">Active</span>
     </button>
   </div>
 
   <!-- NOTES VIEWER -->
-  <div id="viewer-notes">
+  <div id="viewer-notes" style="display:none;">
     <div style="border:2px solid var(--yellow);border-radius:14px;overflow:hidden;box-shadow:0 0 30px rgba(232,0,29,.2);">
       <div style="background:#1a1a2e;padding:10px 16px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--border);">
         <div style="display:flex;align-items:center;gap:8px;">
@@ -431,7 +438,7 @@ src="https://www.facebook.com/tr?id=2238075896675319&ev=PageView&noscript=1"/>
   </div>
 
   <!-- PYQs VIEWER -->
-  <div id="viewer-pyqs" style="display:none;">
+  <div id="viewer-pyqs">
     <div style="border:2px solid var(--yellow);border-radius:14px;overflow:hidden;box-shadow:0 0 30px rgba(232,0,29,.2);">
       <div style="background:#1a1a2e;padding:10px 16px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--border);">
         <div style="display:flex;align-items:center;gap:8px;">
@@ -599,15 +606,23 @@ function switchTab(tab) {
     pyqs.style.display  = 'none';
     tNotes.style.background = 'var(--red)';
     tNotes.style.color = '#fff';
+    tNotes.style.border = 'none';
     tPyqs.style.background  = 'transparent';
     tPyqs.style.color = 'var(--muted)';
+    tPyqs.style.border = '1.5px dashed rgba(255,255,255,0.15)';
+    tNotes.innerHTML = '📝 Notes Demo<span style="position:absolute;top:-8px;right:-6px;background:var(--green);color:#fff;font-size:.55rem;font-weight:900;padding:2px 6px;border-radius:50px;">Active</span>';
+    tPyqs.innerHTML  = '📄 PYQs Demo<span style="font-size:.7rem;display:block;color:rgba(255,255,255,.4);font-weight:600;margin-top:2px;">यहाँ click करो 👆</span>';
   } else {
     pyqs.style.display  = 'block';
     notes.style.display = 'none';
     tPyqs.style.background  = 'var(--red)';
     tPyqs.style.color = '#fff';
+    tPyqs.style.border = 'none';
     tNotes.style.background = 'transparent';
     tNotes.style.color = 'var(--muted)';
+    tNotes.style.border = '1.5px dashed rgba(255,255,255,0.15)';
+    tPyqs.innerHTML  = '📄 PYQs Demo<span style="position:absolute;top:-8px;right:-6px;background:var(--green);color:#fff;font-size:.55rem;font-weight:900;padding:2px 6px;border-radius:50px;">Active</span>';
+    tNotes.innerHTML = '📝 Notes Demo<span style="font-size:.7rem;display:block;color:rgba(255,255,255,.4);font-weight:600;margin-top:2px;">यहाँ click करो 👆</span>';
   }
 }
 
